@@ -1,26 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import invoices from './invoices.json';
+import Grid from '@material-ui/core/Grid';
+import Invoice from './Invoice';
+import InvoiceForm from './InvoiceForm';
+import Typography from '@material-ui/core/Typography';
+
 
 class App extends Component {
+  state = {
+    invoices: invoices
+  };
+
+  handleSubmit = inv => {
+    this.setState((prevState) => {
+      const newInvoice = {
+        cliente: {
+          nombre: inv.nombre,
+          cedula: inv.cedula
+        },
+        impresa: inv.impresa,
+        gastos: inv.gastos
+      };
+      return ({
+        invoices: [...prevState.invoices, newInvoice]
+      })
+    })
+  }
+
   render() {
+    const {invoices} = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Grid container alignItems='center' justify='center' direction='column'>
+        <Grid item>
+          <InvoiceForm onSubmit={this.handleSubmit}/>
+         </Grid>
+        {invoices.map(i =><Grid item> <Invoice {...i}></Invoice></Grid>)}
+      </Grid>
     );
   }
 }

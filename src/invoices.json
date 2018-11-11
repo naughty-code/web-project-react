@@ -1,0 +1,39 @@
+[
+		{
+			"cliente": {
+				"nombre": "Anderson Montilla",
+				"cedula": "31216618"
+			},
+			"gastos": [
+				{
+					"tipo": "reparacion",
+					"descripcion": "reparacion del motor",
+					"costo": 100,
+					"materiales": [
+						{
+							"nombre": "aceite",
+							"cantidad": 2
+                        },
+                        {
+                            "nombre": "pistones",
+                            "cantidad": 4
+                        }
+					],
+					"herramientas": ["soldador", "taladro", "sierra"]
+				},
+				{
+					"tipo": "reparacion",
+					"descripcion": "reparacion del casco",
+					"costo": 50,
+					"materiales": [
+						{
+							"nombre": "lamina de metal",
+							"cantidad": 4
+						}
+					],
+					"herramientas": ["soldador", "sierra"]
+				}
+			],
+			"impresa": true
+		}
+]
